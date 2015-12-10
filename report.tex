@@ -189,12 +189,12 @@ The route suggestion problem can be considered as a classification problem. The 
 
 Our basic workflow of the modeling procedure is shown in Figure~\ref{fig:systemflow}
 
-\begin{figure*}[!h]
+\begin{figure}[!h]
 \centering
 \includegraphics[width=2.0\columnwidth]{pics/work-flow.png}
 \caption{System flow chart}
 \label{fig:systemflow}
-\end{figure*}
+\end{figure}
 
 The modeling procedure mainly consists of two parts:
 \begin{itemize}
@@ -245,18 +245,23 @@ The questions and possible answers are in the survey are listed in table~\ref{ta
 
 The users are asked to draw the routes on the maps of each floor. On each map, we marked some special places, like the restrooms, Tim Hortons etc. These marks can help users to plan their route according to their answers (e.g. if they want to grab a cup of coffee). After the users finished their drawing, we will store this route in our server. The route data is in JSON format. One example is:
 
-
-\begin{lstlisting}
+\begin{verbatim}
 "data":{
   "paths":[
-            [
-              {"mapURL":"maps/dc1.png","pointList":[{"x":774.6552269835852,"y":834.1966612816371}]},
-              {"mapURL":"maps/dc2.png","pointList":[{"x":677.4289260557916,"y":568.6845449649974}]}
-            ]
-          ],
+    [
+      {
+        "mapURL":"maps/dc1.png",
+        "pointList":[{"x":1,"y":1}]
+      },
+      {
+        "mapURL":"maps/dc2.png",
+        "pointList":[{"x":2,"y":2}]
+      }
+    ]
+  ],
   "id":["1449207710639"]
 }
-\end{lstlisting}
+\end{verbatim}
 
 After that, we will do analysis on the route data. We analyze each route to derive several physical properties:
 \begin{itemize}
@@ -336,15 +341,169 @@ The pseudocode for the route suggesting algorithm is:
   \EndFunction
 \end{algorithmic}
 
-\section{INTERFACE}
+\section{INTERFACES}
 We developed a web application for users to record data for us. Our web applications has the following advantages,
 \begin{itemize}
-\item It do not require installation. Our users can visit our system by simply opening a website in their browser.
+\item It is light-weighted and do not require installation. Our users can visit our system by simply opening a website in their browser.
 \item It could be updated easily and quickly in the server end. Our users do not have the version problem.
 \item It has high adaptability on multiply devices. Both PC users and mobile device users can reach our system easily.
 \item It can be reached anytime, anywhere. Our users can label routes whenever they want. That makes it easier to collect various types of routes.
 \item Collected data are highly centralized in the server and no data would be stored locally. That ensures the security and stability of data.
 \end{itemize}
+Our web application generally has two interfaces, recordroute interface and searchroute interface. Recordroute interface allows users to fill in their personal preferences, select start location and end location and draw the route on the maps. Searchroute interface allows users to fill in their personal preferences, select start location and end location and view the route plan from the server. 
+
+\subsection{Recordroute Interface}
+This interface is used for recording daily routes from one room location to another across building groups. Our users need to finish the survey about their current personal preferences first, and then choose the start location and end location. After that, they can start to record the route on the webpage. The basic workflow of the recordroute interface is shown in Figure~\ref{fig:label-ui-flow}.
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.6\columnwidth]{pics/label-ui-flow.png}
+\caption{Workflow of Recordroute Interface}
+\label{fig:label-ui-flow}
+\end{figure}
+
+Users will first be presented the personal preferences page, as shown in Figure~\ref{fig:personal_page}, and finish the perference survey. At the bottom of this page, there is a \"Go record\" button. After finishing the survey, users will click the button. Then users will be nevigated to the route drawing page, as shown in Figure~\ref{fig:routedraw_page}.
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.6\columnwidth]{pics/personal_page.png}
+\caption{Personal Preference Page}
+\label{fig:personal_page}
+\end{figure}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.6\columnwidth]{pics/routedraw_page.png}
+\caption{Welcome Page}
+\label{fig:routedraw_page}
+\end{figure}
+
+Users will choose their start building, start room, end building, end room from the top menus on the page, as shown in Figure~\ref{fig:choose_page}, and click \"GO\" button on the right side of the menu.
+
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.6\columnwidth]{pics/choose_page.png}
+\caption{Choose Page}
+\label{fig:choose_page}
+\end{figure}
+
+
+Once the \"GO\" button is clicked, the user will be presented the floor map of the start location he chose, a little wizard riding a broom is placed on the map indicating the location of the start room, as shown in Figure~\ref{fig:map0}. There are many labels on the map (e.g. bathroom labels, the Tim Hortons labels, bus stop labels, printer labels) to help users to picture the environment in their brains better. 
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.6\columnwidth]{pics/map0.png}
+\label{fig:map0}
+\end{figure}
+
+Users can start drawing their routes by simply clicking on the map. Their first step shall be the start room. Each time they clicked, a foot print will be drawn on the map. Neighboring steps will have connected foot prints, as shown in Figure~\ref{fig:map1}.
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.6\columnwidth]{pics/map1.png}
+\label{fig:map1}
+\end{figure}
+
+
+Stairs and elevators are also labeled on the maps. If our users need to go up stairs or down stairs, they can click the stairs or the elevators on the map. A popup dialog will be presented when those labels are clicked. Users can choose to go up, down or just close the dialog in the dialog, as shown in Figure~\ref{fig:map2}.
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.6\columnwidth]{pics/map2.png}
+\label{fig:map2}
+\end{figure}
+
+The corresponding floor map will be presented on the webpage if the users clicked going up or going down. Floor maps in the same building are aligned and in the same scale. Therefore, users can easily find out the stairs or the elevator they come from. Users can keep drawing routes on the new floor map by clicking on the map, as shown in Figure~\ref{fig:map3}.
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.6\columnwidth]{pics/map3.png}
+\label{fig:map3}
+\end{figure}
+
+Exits and entrances are labeled on the maps as well. If our users need to exit the building ,they can click the exit on the map. The same as above, a popup dialog will be presented and users can choose to exit the building, enter the building or just close the dialog in the dialog, as shown in Figure~\ref{fig:map4}.
+
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.6\columnwidth]{pics/map4.png}
+\label{fig:map4}
+\end{figure}
+
+So far, our system support MC building and DC building. Therefore, we already calculated which floor in which building users can get after exiting each of the exits (e.g. users will get the third floor of MC building after exiting the exit on the second floor of DC building). When the users click the exit button on the dialog, they will be presented the corresponding floor map of the expected floor in the expected building. Users can adjust the floor by simply click the stairs labels if they found they are not on their expected floors. When get to the expected floor, users will need to specify the entrance they use to enter the building by click on the entrance label on the map and choose \"enter\" on the popup dialog. Once they entered the building, they can continue to draw maps as before, as shown in Figure~\ref{fig:map5}.
+
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.6\columnwidth]{pics/map5.png}
+\label{fig:map5}
+\end{figure}
+
+After the usrs arrived their destination, they will click the finish button on the right side of menus. Once the finish button is clicked, the route is recored in the server and the users will be presented a thank you on the webpage, as shown in Figure~\ref{fig:map6}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.6\columnwidth]{pics/map6.png}
+\label{fig:map6}
+\end{figure}
+
+\subsection{Seachroute Interface}
+This interface is used for search routes from one room location to another across building groups with personal preferences. Our users need to finish the survey about their current personal preferences first, and then choose the start location and end location. After that, the route will be presented on the webpage. The basic workflow of the recordroute interface is shown in Figure~\ref{fig:find-uiflow}.
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.6\columnwidth]{pics/find-uiflow.png}
+\caption{Workflow of Seachroute Interface}
+\label{fig:find-uiflow}
+\end{figure}
+
+
+Same as above, users will first be presented the personal preferences page, as shown in Figure~\ref{fig:personal_page}, and finish the perference survey. At the bottom of this page, there is a \"Search\" button. After finishing the survey, users will click the button. Then users will be nevigated to the route presenting page, as shown in Figure~\ref{fig:routedraw_page}.
+
+
+
+Users will choose their start building, start room, end building, end room from the top menus on the page, as shown in Figure~\ref{fig:choose_page}, and click \"GO\" button on the right side of the menu.
+
+
+Once the \"GO\" button is clicked, the webpage will send the server the request and the server will reply the webpage with the proper route. Then the user will be presented the floor map of the start location he chose, with connected footprints on it, as shown in Figure~\ref{fig:map7}. There are also many labels on the map (e.g. bathroom labels, the Tim Hortons labels, bus stop labels, printer labels) to help users to picture the environment in their brains better. 
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.6\columnwidth]{pics/map7.png}
+\label{fig:map7}
+\end{figure}
+
+Our users will follow those footprints on the map. If the footprints on the current floor map end up on an stairs label or elevator label, the users can click on that label and a popup dialog will be presented, as shown in Figure~\ref{fig:map8}. Users can choose to go up or down stairs in the dialog. However, this time only the correct direction will be responded. That is to say, if the planned route goes upstairs from the second floor of DC to the first floor of DC, the map will not change if users click go upstairs on the second floor.
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.6\columnwidth]{pics/map8.png}
+\label{fig:map8}
+\end{figure}
+
+
+If it is the correct direction of stairs or elevators, the corresponding floor map as well as the footprints will be presented, as shown in Figure~\ref{fig:map9}.
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.6\columnwidth]{pics/map9.png}
+\label{fig:map9}
+\end{figure}
+
+The same rules apply on exits and entrances as well, as shown in Figure~\ref{fig:map10} and Figure~\ref{fig:map11}.
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.6\columnwidth]{pics/map10.png}
+\label{fig:map10}
+\end{figure}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.6\columnwidth]{pics/map11.png}
+\label{fig:map11}
+\end{figure}
 
 \section{EXPERIMENT}
 
