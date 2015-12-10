@@ -24,6 +24,9 @@
 \usepackage{url}      % llt: nicely formatted URLs
 \usepackage{listings}
 \lstset{breaklines}
+\usepackage{tabularx}
+
+>>>>>>> f309fc711c504de7652feeda11ee158654a080e3
 % llt: Define a global style for URLs, rather that the default one
 \makeatletter
 \def\url@leostyle{%
@@ -216,7 +219,28 @@ The training data collection contains two steps:
 
 \subsubsection{Survey}
 
-The questions and possible answers are in the survey are listed in table-XX (draw the table of the questions and answers). We convert these answers to a preference vector. From the table, we can see that the values of each element of the vector are discrete. The questions list are far from complete. One potential future work is that we can add more questions based on users’ feedback in crowdsourcing.
+The questions and possible answers are in the survey are listed in table~\ref{table:survey_questions}. We convert these answers to a preference vector. From the table, we can see that the values of each element of the vector are discrete. The questions list are far from complete. One potential future work is that we can add more questions based on users’ feedback in crowdsourcing.
+\begin{table}
+  \centering
+  \caption{Survey questions and answers}
+  \label{table:survey_questions}
+  \begin{tabularx}{0.5\textwidth}{|X|l|}
+    \hline \hline
+    Questions & Answers \\\hline
+    Is it sunny outside? & Yes/NO \\\hline
+    Is it cloudy outside? & Yes/NO \\\hline
+    Is it rainy/snowy outside? & Yes/NO \\\hline
+    Do you feel tired now? & Yes/NO \\\hline
+    Do you want to go to Tim Hortons on your way? & Yes/NO \\\hline
+    Do you want to go to bathroom on your way? & Yes/NO \\\hline
+    Do you want to avoid crowds at a particular time (e.g. heavy crowds outside MC2065 when class ends, crowds when special events take place, etc.)? & Yes/NO \\\hline
+    Are you curious of the floor environment (e.g. first time visit, etc.)? & Yes/NO \\\hline
+    Do you need the printer on your way? & Yes/NO \\\hline
+    Are you hurry or not through this walk? & Yes/NO \\\hline
+    Do you want some fresh air on your way? & Yes/NO \\\hline
+    \hline
+  \end{tabularx}
+\end{table}
 
 \subsubsection{Route drawing}
 
@@ -281,6 +305,8 @@ This tree  is used to predict the desired physical properties by the users based
 
 \subsubsubsection{routeSuggestionDecisionTree}
 This tree is used to predict the most suitable route according to the physical property vector. With this decision tree, given a physical properties requirement (e.g. the route should pass by a restroom), we are able to suggest a route which match the requirement as much as possible.
+
+\subsection{Normal or Body Text}
 
 
 \subsection{First Page Copyright Notice}
