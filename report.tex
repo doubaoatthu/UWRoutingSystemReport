@@ -245,18 +245,23 @@ The questions and possible answers are in the survey are listed in table~\ref{ta
 
 The users are asked to draw the routes on the maps of each floor. On each map, we marked some special places, like the restrooms, Tim Hortons etc. These marks can help users to plan their route according to their answers (e.g. if they want to grab a cup of coffee). After the users finished their drawing, we will store this route in our server. The route data is in JSON format. One example is:
 
-
-\begin{lstlisting}
+\begin{verbatim}
 "data":{
   "paths":[
-            [
-              {"mapURL":"maps/dc1.png","pointList":[{"x":774.6552269835852,"y":834.1966612816371}]},
-              {"mapURL":"maps/dc2.png","pointList":[{"x":677.4289260557916,"y":568.6845449649974}]}
-            ]
-          ],
+    [
+      {
+        "mapURL":"maps/dc1.png",
+        "pointList":[{"x":1,"y":1}]
+      },
+      {
+        "mapURL":"maps/dc2.png",
+        "pointList":[{"x":2,"y":2}]
+      }
+    ]
+  ],
   "id":["1449207710639"]
 }
-\end{lstlisting}
+\end{verbatim}
 
 After that, we will do analysis on the route data. We analyze each route to derive several physical properties:
 \begin{itemize}
