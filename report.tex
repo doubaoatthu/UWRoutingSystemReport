@@ -22,7 +22,8 @@
 \usepackage{graphics} % for EPS, load graphicx instead
 \usepackage{times}    % comment if you want LaTeX's default font
 \usepackage{url}      % llt: nicely formatted URLs
-
+\usepackage{listings}
+\lstset{breaklines}
 % llt: Define a global style for URLs, rather that the default one
 \makeatletter
 \def\url@leostyle{%
@@ -219,17 +220,68 @@ The questions and possible answers are in the survey are listed in table-XX (dra
 
 \subsubsection{Route drawing}
 
+The users are asked to draw the routes on the maps of each floor. On each map, we marked some special places, like the restrooms, Tim Hortons etc. These marks can help users to plan their route according to their answers (e.g. if they want to grab a cup of coffee). After the users finished their drawing, we will store this route in our server. The route data is in JSON format. One example is:
 
-\subsection{Normal or Body Text}
 
-Please use a 10-point Times Roman font or, if this is unavailable,
-another proportional font with serifs, as close as possible in
-appearance to Times Roman 10-point. The Press 10-point font available
-to users of Script is a good substitute for Times Roman. If Times
-Roman is not available, try the font named Computer Modern Roman. On a
-Macintosh, use the font named Times and not Times New Roman. Please
-use sans-serif or non-proportional fonts only for special purposes,
-such as headings or source code text.
+\begin{lstlisting}
+"data":{
+  "paths":[
+            [
+              {"mapURL":"maps/dc1.png","pointList":[{"x":774.6552269835852,"y":834.1966612816371}]},
+              {"mapURL":"maps/dc2.png","pointList":[{"x":677.4289260557916,"y":568.6845449649974}]}
+            ]
+          ],
+  "id":["1449207710639"]
+}
+\end{lstlisting}
+
+After that, we will do analysis on the route data. We analyze each route to derive several physical properties:
+\begin{itemize}
+\item Number of stairs
+\item Times of using elevators
+\item Times of exiting buildings
+\item If going near Tim Hortons
+\item If going near a printer
+\item If going a restroom
+\item The distance
+\item If the route never goes outside
+\end{itemize}
+
+A vector of the eight properties is called a physical property vector. A physical property vector should be related to the preference vector.
+
+
+In summary, for each user, the data we collect is illustrated in Figure~\ref{fig:element-detail}.
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1.0\columnwidth]{pics/element-detail.png}
+\caption{System flow chart}
+\label{fig:element-detail}
+\end{figure}
+
+\subsubsection{Decision tree constructing}
+
+A decision tree is a flowchart-like structure in which each internal node represents a \"test\" on an attribute (e.g. whether a coin flip comes up heads or tails), each branch represents the outcome of the test and each leaf node represents a class label (decision taken after computing all attributes). The paths from root to leaf represents classification rules.
+
+
+In decision analysis a decision tree and the closely related influence diagram are used as a visual and analytical decision support tool, where the expected values of competing alternatives are calculated.
+
+
+We use Scikit-Learn, a python machine learning library, to construct these decision trees. The scikit-learn library is a powerful machine learning toolkit. Besides decision tree construction algorithms, it also provides a useful interface to generate a visual representation of the decision tree.
+
+
+Using the training data we collected in the former step, we build two types of decision trees:
+\begin{itemize}
+\item physicalPropertyDecisionTree
+\item routeSuggestionDecisionTree
+\end{itemize}
+
+\subsubsubsection{physicalPropertyDecisionTree}
+This tree  is used to predict the desired physical properties by the users based on their current status and environment conditions. For each physical property, we build a decision tree independently. The reason we build a separate decision tree for each physical property is because we want to generate a physical property vector which doesn’t happen in the data collection step. If we build a decision tree for the entire physical property vector, all leaf nodes of the decision tree represents a vector we have met in the collection step.
+
+\subsubsubsection{routeSuggestionDecisionTree}
+This tree is used to predict the most suitable route according to the physical property vector. With this decision tree, given a physical properties requirement (e.g. the route should pass by a restroom), we are able to suggest a route which match the requirement as much as possible.
+
 
 \subsection{First Page Copyright Notice}
 
