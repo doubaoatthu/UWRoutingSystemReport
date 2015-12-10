@@ -313,7 +313,7 @@ In the route suggesting procedure, the basic workflow is described in Figure~\re
 \begin{figure}[!h]
 \centering
 \includegraphics[width=1.0\columnwidth]{pics/route-suggest-work-flow.png}
-\caption{System flow chart}
+\caption{Route Suggesting flow chart}
 \label{fig:route-suggest-work-flow}
 \end{figure}
 
@@ -339,20 +339,134 @@ function routeSuggestion(scenarioData):
 
 In this section, we explain how we execute the crowdsourcing to collect data for training the model based on decision tree algorithms.
 
+\subsection{Experiment Setup}
+\subsubsection{Participants}
+Since drawing a route between two specific rooms in the campus of University of Waterloo requires a relatively high degree of familiarity of the campus. Thus, the participants are UW students. 48 students in total participated in our experiment. These students have been UW for at least 2 months.
+\subsubsection{ Source and Destination}
+To simplify our experiment, currently, we only support routes from DC 1350 to MC 4060. All of the participants are familiar with these two buildings. Since the number of participants are limited, supporting more source and destination pairs may reduce the data for each pair.
 
-\section{Conclusion}
+\subsection{Experiment Methodology}
 
-It is important that you write for the SIGCHI audience.  Please read
-previous years' Proceedings to understand the writing style and
-conventions that successful authors have used.  It is particularly
-important that you state clearly what you have done, not merely what
-you plan to do, and explain how your work is different from previously
-published work, i.e., what is the unique contribution that your work
-makes to the field?  Please consider what the reader will learn from
-your submission, and how they will find your work useful.  If you
-write with these questions in mind, your work is more likely to be
-successful, both in being accepted into the Conference, and in
-influencing the work of our field.
+The experiment consists of two steps:
+
+
+Step 1: Take a survey about the current status of the participant and the environment conditions. All participants are asked to answer all questions listed in table-XX (see modeling procedure). All these data is sent to the server and associated with a route ID.
+
+
+Step 2: Draw a route from DC 1350 to MC 4060. The users are asked to plan the route according to their answers to the survey taken in step 1. The coordinates of points the user click on the map will be sent to the server as the route data. The route data is also associated with the route ID in step 1.
+
+
+After these two steps, all data collection work has been finished. In summary, for each user, the data we collect includes:
+\begin{itemize}
+\item Survey answers
+\item Routes data
+\end{itemize}
+
+Step 3: Derive physical properties from the data of each route. PhysicalPropertyDecisionTrees are generated based on the physical properties and survey answers. RouteSuggestionDecisionTree is generated based on the physical properties and route data.
+
+\section{Result}
+
+In our experiment, we generate 8 decision trees. 7 of them are for predicting physical properties based on a preference vector. The other one left is for predicting the route number based on a physical property vector.
+
+
+The graph for all decision trees can be found below. There are several clarifications about the graph.
+\begin{itemize}
+\item For each non-leaf node of a decision tree, the first line is the condition to be checked. 
+\item The gini value of each node is positive correlative to the probability of wrong prediction. 
+\item The value of samples means how much samples are left after following all the path from the root to the current node.
+\item Each element in the value array means the number of samples of the corresponding class.
+\item The value of class means the prediction value. This value is only shown in the routeSuggestionDecisionTree.
+\end{itemize}
+
+\subsection{Result of PhysicalPropertyDecisionTree}
+
+Figure ~\ref{fig:dt1} shows the decision tree for predicting the number of stairs the route should use based on the user’s preference.
+
+
+Figure ~\ref{fig:dt2} shows the decision tree for predicting how many levels of elevators the route should use.
+
+
+Figure ~\ref{fig:dt3} shows the decision tree for predicting how many exits the route should pass.
+
+
+Figure ~\ref{fig:dt4} shows the decision tree for predicting if the route should pass by a coffee shop.
+
+
+Figure ~\ref{fig:dt6} shows the decision tree for predicting if the route should pass by a rest room.
+
+
+Figure ~\ref{fig:dt7} shows the decision tree for predicting how long if the route.
+
+
+Figure ~\ref{fig:dt8} shows the decision tree for predicting if the route goes outside the building.
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1.0\columnwidth]{pics/decisionTree_1.png}
+\caption{Decision tree for predicting the number of stairs the route should use based on the user’s preference.}
+\label{fig:dt1}
+\end{figure}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1.0\columnwidth]{pics/decisionTree_2.png}
+\caption{Decision tree for predicting how many levels of elevators the route should use.}
+\label{fig:dt2}
+\end{figure}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1.0\columnwidth]{pics/decisionTree_3.png}
+\caption{Decision tree for predicting how many exits the route should pass.}
+\label{fig:dt3}
+\end{figure}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1.0\columnwidth]{pics/decisionTree_4.png}
+\caption{Decision tree for predicting if the route should pass by a coffee shop.}
+\label{fig:dt4}
+\end{figure}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1.0\columnwidth]{pics/decisionTree_6.png}
+\caption{Decision tree for predicting if the route should pass by a rest room..}
+\label{fig:dt6}
+\end{figure}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1.0\columnwidth]{pics/decisionTree_7.png}
+\caption{Decision tree for predicting how long if the route.}
+\label{fig:dt7}
+\end{figure}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1.0\columnwidth]{pics/decisionTree_8.png}
+\caption{Decision tree for predicting if the route goes outside the building.}
+\label{fig:dt8}
+\end{figure}
+
+\subsection{Result of RouteSuggestionDecisionTree}
+Figure ~\ref{fig:dt9} shows the decision tree for predicting which route should be picked.
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1.0\columnwidth]{pics/routeDT.png}
+\caption{Decision tree for predicting which route should be picked.}
+\label{fig:dt9}
+\end{figure}
+
+
+\section{Discussion}
+From the routeSuggestionDecisionTree, we can see that only a few of the routes are picked. These means that the number of potential routes is quite small since there are only limited possible routes. Besides, one route can fulfill many physical requirements. We think there are more physical properties which are useful. Also, it will be great if we can support more sources and destinations.
+
+
+At the beginning, we asked the participants to draw the route before answering the survey questions. However, according to the participants, it will be more difficult for them to recall how they fill when they draw the route. Besides, they think taking the survey at first will be better. We adapt their suggestions and update our project to the current version.
+
+
+Besides of the decision tree algorithm we used, the k-NN algorithm also seems to meet our requirements and is better when there are more features to be considered. It will be a good idea to implement a k-NN classifier for route suggesting problem. 
 
 \section{Acknowledgments}
 
