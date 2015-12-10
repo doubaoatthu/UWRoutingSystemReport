@@ -22,6 +22,7 @@
 \usepackage{graphics} % for EPS, load graphicx instead
 \usepackage{times}    % comment if you want LaTeX's default font
 \usepackage{url}      % llt: nicely formatted URLs
+\usepackage{tabularx}
 
 % llt: Define a global style for URLs, rather that the default one
 \makeatletter
@@ -215,10 +216,30 @@ The training data collection contains two steps:
 
 \subsubsection{Survey}
 
-The questions and possible answers are in the survey are listed in table-XX (draw the table of the questions and answers). We convert these answers to a preference vector. From the table, we can see that the values of each element of the vector are discrete. The questions list are far from complete. One potential future work is that we can add more questions based on users’ feedback in crowdsourcing.
+The questions and possible answers are in the survey are listed in table~\ref{table:survey_questions}. We convert these answers to a preference vector. From the table, we can see that the values of each element of the vector are discrete. The questions list are far from complete. One potential future work is that we can add more questions based on users’ feedback in crowdsourcing.
+\begin{table}
+  \centering
+  \caption{Survey questions and answers}
+  \label{table:survey_questions}
+  \begin{tabularx}{0.5\textwidth}{|X|l|}
+    \hline \hline
+    Questions & Answers \\\hline
+    Is it sunny outside? & Yes/NO \\\hline
+    Is it cloudy outside? & Yes/NO \\\hline
+    Is it rainy/snowy outside? & Yes/NO \\\hline
+    Do you feel tired now? & Yes/NO \\\hline
+    Do you want to go to Tim Hortons on your way? & Yes/NO \\\hline
+    Do you want to go to bathroom on your way? & Yes/NO \\\hline
+    Do you want to avoid crowds at a particular time (e.g. heavy crowds outside MC2065 when class ends, crowds when special events take place, etc.)? & Yes/NO \\\hline
+    Are you curious of the floor environment (e.g. first time visit, etc.)? & Yes/NO \\\hline
+    Do you need the printer on your way? & Yes/NO \\\hline
+    Are you hurry or not through this walk? & Yes/NO \\\hline
+    Do you want some fresh air on your way? & Yes/NO \\\hline
+    \hline
+  \end{tabularx}
+\end{table}
 
 \subsubsection{Route drawing}
-
 
 \subsection{Normal or Body Text}
 
