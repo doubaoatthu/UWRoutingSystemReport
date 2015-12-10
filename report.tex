@@ -25,6 +25,7 @@
 \usepackage{listings}
 \lstset{breaklines}
 \usepackage{tabularx}
+\usepackage{algpseudocode}
 % llt: Define a global style for URLs, rather that the default one
 \makeatletter
 \def\url@leostyle{%
@@ -326,14 +327,14 @@ The data we received from the user, which is in the same format of the survey da
 We have already generated a physical property vector in step 1. With this vector, the routeSuggestionDecisionTree can be used to generate a route suggestion.
 
 The pseudocode for the route suggesting algorithm is:
-\begin{verbatim}
-function routeSuggestion(scenarioData):
-  preferenceVector = parse(scenarioData)
-  for i from 0 to numOfPhysicalProperties
-    physicalPropertyVector[i] = physicalPropertyDecisionTrees[i].predict(preferenceVector)
-  routeId = routeSuggestionDecisionTree.predict(physicalPropertyVector[i])
-  return routeId
-\end{verbatim}
+\begin{algorithmic}\footnotesize
+  \Function{routeSuggestion}{scenarioData}
+    \State preferenceVector$\gets$\Call{parse}{scenarioData}
+    \For{0 $\leq$ i $<$ numOfPhysicalProperties}
+      \State physicalVector[i]$\gets$physicalDT[i].predict(preferenceVector) \EndFor
+    \State \Return routeDT.predict(physicalVector)
+  \EndFunction
+\end{algorithmic}
 
 \section{EXPERIMENT}
 
