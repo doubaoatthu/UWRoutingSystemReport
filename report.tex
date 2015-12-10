@@ -110,56 +110,115 @@ In this paper, we describe the design of the courdsourcing routes collecting met
 
 
 \section{RELATED WORK}
-\subsection{abc}
 
-On~\cite{howe2006rise} each page your material (not including the page number) should fit
-within a rectangle of 18 x 23.5 cm (7 x 9.25 in.), centered on a US
-letter page, beginning 1.9 cm (.75 in.) from the top of the page, with
-a .85 cm (.33 in.) space between two 8.4 cm (3.3 in.) columns.  Right
-margins should be justified, not ragged. Beware, especially when using
-this template on a Macintosh, Word can change these dimensions in
-unexpected ways. Please be sure that your PDF is US letter and not
-A4. If your PDF or paper are formatted for A4, the submission will be
-returned to you to fix.
+During the system design process, we reviewed literature related to our ideas. The Kimono ~\cite{huang2005kimono} is a knowledge sharing system, which presents the concept of association. Our in-building routing system uses this idea as well; for example, each route collected in the crowdsourcing stage is associated with a set of personal preferences specified by the user. One of the prior works we reviewed has the similar idea since it ~\cite{heimerl2012communitysourcing} includes a physical kiosk as well. In addition, the physical kiosks ~\cite{heimerl2012communitysourcing} are used for crowdsourcing. Since our system collects in-building routes with personal preferences from our users, crowdsourcing plays a significant role here, and crowdsourcing needs to be studied from the prior work ~\cite{howe2006rise,ipeirotis2014quizz,alt2010location}. Since our system requires users to record routes on the map displayed on the screen and provide inputs through the questionnaire, user interface designs need to be taken into our consideration. Some prior works ~\cite{della2013crowdsourcing,vaataja2011crowdsourced} provide us with very helpful results for our system design. Our results are based on decision trees. In order to have some insights about decision trees, we reviewed and studied related work ~\cite{su2006fast,quinlan1987simplifying}. In this section, we discuss how prior work helps us develop our in-building routing system with personal preferences across building groups. 
 
-\section{Typeset Text}
 
-Prepare your submissions on a word processor or typesetter.  Please
-note that page layout may change slightly depending upon the printer
-you have specified.  \LaTeX\ sometimes will create overfull lines
-that extend into columns.  To attempt to combat this, the .cls
-file has a command, {\textbackslash}sloppy, that essentially asks
-\LaTeX\ to prefer underfull lines with extra whitespace.  For more
-details on this, and info on how to control it more finely, check out
-{\url{http://www.economics.utoronto.ca/osborne/latex/PMAKEUP.HTM}}.
+\subsection{Concept of Association}
 
-\subsection{Title and Authors}
+The Kimono paper ~\cite{huang2005kimono} presents a system, which extends the function of an information kiosk. The method they used in order to achieve the extension is to allow interactions between a kiosk and a mobile device, such as a smartphone. We know that a kiosk is usually a physically located machine displaying information. A user could stand in front of a kiosk, and touch the screen to select information of his or her interest. The information from the kiosk is relevant to the particular event at its location. Some disadvantages of a kiosk can be seen. For example, the kiosk lacks mobility, and it’s difficult to add more information to it.
 
-Your paper's title, authors and affiliations should run across the
-full width of the page in a single column 17.8 cm (7 in.) wide.  The
-title should be in Helvetica 18-point bold; use Arial if Helvetica is
-not available.  Authors' names should be in Times Roman 12-point bold,
-and affiliations in Times Roman 12-point.  For more than three authors,
-you may have to place some address information in a footnote, or in a named
-section at the end of your paper. Please use full international addresses and
-telephone dialing prefixes.  Leave one 10-pt line of white space below the last
-line of affiliations.
 
-\subsection{Abstract and Keywords}
+To conquer these inflexibilities, the main idea introduced in the paper ~\cite{huang2005kimono} is to allow interactions between a mobile device (such as a smartphone) and a kiosk. People are familiar with smartphones as they use phones every day. Functionalities of a smartphone include taking pictures, taking notes, recording voices, and so on. Through these various ways, a person can easily create new contents at any time at his or her current location. Then he or she can associate the newly created contents with other selected contents or events presented on the kiosk. By uploading the new contents and its associations, other people can therefore have access to them.
 
-Every submission should begin with an abstract of about 150 words,
-followed by a set of keywords. The abstract and keywords should be
-placed in the left column of the first page under the left half of the
-title. The abstract should be a concise statement of the problem,
-approach and conclusions of the work described.  It should clearly
-state the paper's contribution to the field of HCI.
 
-The first set of keywords will be used to index the paper in the
-proceedings. The second set are used to catalogue the paper in the ACM
-Digital Library. The latter are entries from the ACM Classification
-System~\cite{acm_categories}.  In general, it should only be necessary
-to pick one or more of the H5 subcategories, see
-\url{http://www.acm.org/class/1998/ccs98.html}
+The Kimono system ~\cite{huang2005kimono} described in the paper is designed specifically for researchers attending a conference. A number of kiosks are placed in the lobby of the conference. They all display the same information relevant to the event, such as conference locations, routes to the airport, hotels, etc. Changes of talk schedules and meal plans are posted on the kiosks as well. Participants of the conference use the touch panel display of a kiosk to select information interested in. Then the information selected is transferred to his or her smartphone. On the smartphone, the program will alert the user about the next event and other relevant details such as starting/ending time, room location, routes to the destination, etc.
+
+
+While attending a lecture at the conference, one can use their smartphones to record notes in the form of text, image, video, or audio. Then they associate newly created notes with selected event or items such as papers or posters presented at the conference. People can also exchange notes with each other directly between two mobile devices, or post the notes they took on the kiosk. For those users who previously downloaded information from the kiosk to their smartphones, if the information downloaded has changed, the updates will be copied to the mobile devices through the system when the next synchronization occurs. 
+
+
+The main insight we learned from the Kimono ~\cite{huang2005kimono} is the concept of associations, which makes the organization of data and synchronization much more simple. Users can get information of his or her interest displayed on the screen and associated information on the smartphone. New information can be created by the user, associated with other relevant information, and made available to others.
+
+
+For our in-building routing system with personal preferences across building groups, the concept of association is utilized. During the crowdsourcing stage, users record their routes while walking to the destination, and later associate personal preferences or features with the route they just recorded. Personal preferences in our system include physical requirements, personal feelings, emotional options, etc. By associating personal preferences with the routes, the system could provide in-building routes with particular personal preferences specified by a user, and later collect ratings from the user about the routes suggested. 
+
+\subsection{Crowdsourcing}
+
+We can see that a lot of researches and experiments are conducted in prior works ~\cite{heimerl2012communitysourcing,alt2010location} in the area of crowdsourcing. Here we discuss the paper ~\cite{heimerl2012communitysourcing}, in which crowdsourcing concepts are presented and extended as communitysourcing. What we know is that crowdsourcing involves division and assignment of tasks to a number of online users. In order to have better quality work, the kiosk is used to attract the right crowds to perform tasks. In this case, the right crowds are required to be knowledgeable enough in the corresponding task domain assigned to them. The result the paper showed is that the crowdsourcing system was able to perform the grading task more accurately than traditional grading.
+
+
+What we did is to incorporate the idea of crowdsourcing into our system. That is, we let crowds generate routes with personal preferences through our system. As the system provides in-building routes across building groups on campus, the potential crowds we are interested in are students, teachers, and staffs. One reason is that they are familiar with the building structures and floor-detailed environments, and therefore the quality of crowdsourced routes is greatly improved. Another reason is that we could obtain enough route data in a relatively short period of time through the crowdsourcing stage. Furthermore, during the crowdsourcing stage, the system could capture a particular set of preferences associated with a route, and later suggest this route upon requests of same or similar preferences in the set.
+
+
+\subsection{User Interface}
+
+Since we require the routes to be recorded when users walk to their destinations, our system provides an interface on both computers and mobile devices. The user gets access to our system on the screen in the beginning of his or her journey. Partial map centered at his or her current position is displayed. The user periodically marks his or her next new position along the way to the destination, and the map accordingly centers at the newly marked position. A questionnaire is displayed to request his or her personal preferences associated with the recorded route before the user starts recording.
+
+
+The questions on the questionnaire are asked before the recording process. The questionnaire of our system helps to collect the personal preference data with the crowdsourced routes of our interest. After thinking of what kinds of questions should be asked, we have the questions such as the weather conditions, the fatigue level, pass coffee shop or not, hurry level, and etc.
+
+
+When designing such a crowdsourcing interface, we need to think about whether our user interface or task design is effective on both computers and mobile devices. We reviewed the prior paper ~\cite{della2013crowdsourcing} to gain better understandings and insights about crowdsourcing user interfaces and task designs for mobile users.
+
+
+The main question in the paper ~\cite{della2013crowdsourcing} the author trying to answer is “Which crowdsourcing platforms and which kinds of tasks are more adequate to mobile devices”. It turns out that some of those inadequacy issues are superficial, and they can be resolved by providing better user interfaces and/or better crowdsourcing task designs. Several typical reasons for such inadequacy issues on mobile phones are found as well, such as redundant task description, unsupported formats of audio, scrolling problem, layout problem in a small display, and so on.  
+
+
+For our system, we also try to conquer these problems by designing simple tasks, requesting simplified inputs, providing concise interfaces, etc. Our system knows the building structures and all of the floor maps. Users records routes through their mobile devices while walking. Partial map centered at the current position is showed, and the user marks the next point along the journey. Upon request of a route with personal preferences specified by a user, the system provides in-building routes and collects ratings for the suggested route afterwards. Several benefits can be seen in our system. For example, instead of keeping track of the entire route walked, the user only needs to mark the next new point by touching the screen every time they move as the partial map will always centered at his or her current point. After gathering point information inputted by the user, the system itself can generate the corresponding route. By displaying only the partial map instead of the entire floor map, we successfully resolve the bad layout problem on small portable screens.
+
+
+\subsection{Decision Tree}
+
+Our results are based on decision trees. As described in the previous section, our system provides users with an interface through which users perform question answering and route recording tasks. The system requires users to answer a questionnaire before they start to record their in-building routes during the crowdsourcing stage. The questionnaire here in the system is used to collect personal preference data associated with the routes recorded. And decision trees are then built accordingly. 
+
+
+We built several graphs of decision trees. What we did was the review of several prior works ~\cite{su2006fast,quinlan1987simplifying} involving the decision trees. A decision tree provides us with support in decision-making. It is known as a tool, which uses a tree like graph or model of decisions and their possible consequences. A decision tree is a useful technique, which learns a model from a provided data set inductively. In order to build a decision tree, we need to be clear about the structure of a decision tree. The tree structure consists of internal nodes, branches, and leaf nodes. We describe each of the above in turn. Each of the internal nodes is a test on an attribute from our crowdsourced data. Each of the branches represents the result from an internal node. Lastly, a leaf node can be seen as a class label. Three types of nodes are in a decision tree. They are decision nodes, chance nodes, and end nodes. The algorithm is shown to readers through a decision tree. 
+
+
+Existing algorithms are introduced in early papers ~\cite{breiman1984classification,quinlan1986induction} to help build decision trees. These algorithms ~\cite{breiman1984classification,quinlan1986induction} build decision trees from the given set of training data. Top down structures are built, partitioning instances into different classes. The splits of instances are based on different attribute values. The algorithm from early work ~\cite{breiman1984classification} uses Gini index to select the splitting attribute. The Gini impurity measures how often a random element from a data set is incorrectly labeled if it was randomly labeled according to the distribution of labels in the subset. Specifically, the Gini impurity is the summation of fi times (1-fi) where fi is the fraction of elements labeled with i.
+
+
+Decision trees are traditionally drawn manually. However, they can grow to very large trees, which makes it difficult for a person to draw by hand. Here, we used a specialized package in Python to generate decision tree graphs for us. Our goal is to have a model that learns from the data gathered and later makes predictions on some variable of interest. In the graphs we created, colored nodes according to their classes together with explicit variable names are shown. 
+
+
+Decision trees are commonly utilized in many analytical procedures. What we learned from prior work are a number of advantages of such a decision support technique as follows. For example, a decision tree is relatively easy to understand and interpret, and it requires little data preparation. Furthermore, it allows adding new cases, and can be combined with other decision support techniques. The cost of prediction on a targeted variable using the tree is logarithmic in the training data size.
+
+\section{SYSTEM DESCRIPTON}
+
+Our system shall be built with knowledge of building structures and floor-level detailed maps of a building group. The main problems that this system is trying to address are collecting routing data with corresponding personal preferences, constructing the routing model based on the collected data. 
+
+
+The route suggestion problem can be considered as a classification problem. The input data we get from the users are their current status (e.g. if they are tired) and environment conditions (e.g. is it sunny). Our goal is to generate an most suitable route based on all of these variables. For example, if the users are tired, a route using elevators should be more suitable than one which uses stairs intuitively. Since most of the status and conditions we currently consider, like if the user is tired or if the user needs to use a printer, are discrete variables. Taking this into considerations, we determine that a decision tree should be a good option.
+
+
+\subsection{Basic workflow}
+
+Our basic workflow of the modeling procedure is shown in Figure~\ref{fig:systemflow}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1.0\columnwidth]{pics/work-flow.png}
+\caption{System flow chart}
+\label{fig:systemflow}
+\end{figure}
+
+The modeling procedure mainly consists of two parts:
+\begin{itemize}
+\item Training data collecting - Crowdsourcing
+\item Decision tree constructing
+\end{itemize}
+
+\subsection{Training data collecting - Crowdsourcing}
+
+To build a model for the route suggestion problem, we first need to collect data for training decision trees by taking advantage of crowdsourcing.
+
+
+Crowdsourcing basically has two aspects, to break a large-scaled complex problem into several pieces of sub-problems, and to involve human efforts to solve or help solve the sub-problems which could be time saving because the solving of sub-problems are highly paralleled. Therefore, we found crowdsourcing has the properties which fit the demand of our system perfectly. In the data collection process, we apply crowdsourcing concept by having our participants to record the routes and score the preference options for that route.
+
+
+The training data collection contains two steps:
+\begin{itemize}
+\item Survey - Uses are asked finish a survey about their status and environment conditions.
+\item Route drawing - Users are asked to draw a path based their answers to the former survey.
+\end{itemize}
+
+\subsubsection{Survey}
+
+The questions and possible answers are in the survey are listed in table-XX (draw the table of the questions and answers). We convert these answers to a preference vector. From the table, we can see that the values of each element of the vector are discrete. The questions list are far from complete. One potential future work is that we can add more questions based on users’ feedback in crowdsourcing.
+
+\subsubsection{Route drawing}
+
 
 \subsection{Normal or Body Text}
 
