@@ -25,6 +25,7 @@
 \usepackage{listings}
 \lstset{breaklines}
 \usepackage{tabularx}
+\usepackage{algpseudocode}
 % llt: Define a global style for URLs, rather that the default one
 \makeatletter
 \def\url@leostyle{%
@@ -82,7 +83,7 @@ breaklinks=true,
 \maketitle
 
 \begin{abstract}
-People travel inside building groups from a room in building A to another in building B frequently. Traditional routing system usually provides shortest routes between two coordinates consist of longitudes and latitudes, but does not have knowledge about building structures and detailed floor maps. It does not take users' personal preferences into account when suggesting the routes as well. Such routes generated cannot meet people’s demand. In this paper, we introduce a new system, which provides in-building routes with personal preferences across building groups.
+People travel inside building groups from a room in building A to another in building B frequently. Traditional routing systems usually provide the shortest routes between two coordinates consist of longitudes and latitudes, but do not have knowledge about building structures and detailed floor maps. These systems do not take users' personal preferences into account when suggesting routes as well. Such routes cannot meet people’s demand. In this paper, we introduce a new system, which provides in-building routes based on personal preferences across building groups.
 \end{abstract}
 
 \keywords{
@@ -188,12 +189,12 @@ The route suggestion problem can be considered as a classification problem. The 
 
 Our basic workflow of the modeling procedure is shown in Figure~\ref{fig:systemflow}
 
-\begin{figure}[!h]
+\begin{figure*}[!h]
 \centering
-\includegraphics[width=1.0\columnwidth]{pics/work-flow.png}
+\includegraphics[width=2.0\columnwidth]{pics/work-flow.png}
 \caption{System flow chart}
 \label{fig:systemflow}
-\end{figure}
+\end{figure*}
 
 The modeling procedure mainly consists of two parts:
 \begin{itemize}
@@ -326,14 +327,24 @@ The data we received from the user, which is in the same format of the survey da
 We have already generated a physical property vector in step 1. With this vector, the routeSuggestionDecisionTree can be used to generate a route suggestion.
 
 The pseudocode for the route suggesting algorithm is:
-\begin{verbatim}
-function routeSuggestion(scenarioData):
-  preferenceVector = parse(scenarioData)
-  for i from 0 to numOfPhysicalProperties
-    physicalPropertyVector[i] = physicalPropertyDecisionTrees[i].predict(preferenceVector)
-  routeId = routeSuggestionDecisionTree.predict(physicalPropertyVector[i])
-  return routeId
-\end{verbatim}
+\begin{algorithmic}\footnotesize
+  \Function{routeSuggestion}{scenarioData}
+    \State preferenceVector$\gets$\Call{parse}{scenarioData}
+    \For{0 $\leq$ i $<$ numOfPhysicalProperties}
+      \State physicalVector[i]$\gets$physicalDT[i].predict(preferenceVector) \EndFor
+    \State \Return routeDT.predict(physicalVector)
+  \EndFunction
+\end{algorithmic}
+
+\section{INTERFACE}
+We developed a web application for users to record data for us. Our web applications has the following advantages,
+\begin{itemize}
+\item It do not require installation. Our users can visit our system by simply opening a website in their browser.
+\item It could be updated easily and quickly in the server end. Our users do not have the version problem.
+\item It has high adaptability on multiply devices. Both PC users and mobile device users can reach our system easily.
+\item It can be reached anytime, anywhere. Our users can label routes whenever they want. That makes it easier to collect various types of routes.
+\item Collected data are highly centralized in the server and no data would be stored locally. That ensures the security and stability of data.
+\end{itemize}
 
 \section{EXPERIMENT}
 
@@ -378,7 +389,7 @@ The graph for all decision trees can be found below. There are several clarifica
 \item The value of class means the prediction value. This value is only shown in the routeSuggestionDecisionTree.
 \end{itemize}
 
-\subsection{Result of PhysicalPropertyDecisionTree}
+\subsection{Result Graphs of PhysicalPropertyDecisionTree}
 
 Figure ~\ref{fig:dt1} shows the decision tree for predicting the number of stairs the route should use based on the user’s preference.
 
@@ -449,7 +460,7 @@ Figure ~\ref{fig:dt8} shows the decision tree for predicting if the route goes o
 \label{fig:dt8}
 \end{figure}
 
-\subsection{Result of RouteSuggestionDecisionTree}
+\subsection{Result Graph of RouteSuggestionDecisionTree}
 Figure ~\ref{fig:dt9} shows the decision tree for predicting which route should be picked.
 \begin{figure}[!h]
 \centering
@@ -470,12 +481,7 @@ Besides of the decision tree algorithm we used, the k-NN algorithm also seems to
 
 \section{Acknowledgments}
 
-We thank CHI, PDC and CSCW volunteers, and all publications support
-and staff, who wrote and provided helpful comments on previous
-versions of this document.  Some of the references cited in this paper
-are included for illustrative purposes only.  \textbf{Don't forget
-to acknowledge funding sources as well}, so you don't wind up
-having to correct it later.
+We thank everyone in CS889.
 
 \balance
 
