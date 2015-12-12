@@ -1,0 +1,324 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf130
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \
+\\begin\{figure\}[!h]\
+\\centering\
+\\includegraphics[width=0.4\\columnwidth]\{pics/label-ui-flow.png\}\
+\\caption\{Workflow of Recordroute Interface\}\
+\\label\{fig:label-ui-flow\}\
+\\end\{figure\}\
+\
+Users will first be presented the personal preferences page, as shown in Figure~\\ref\{fig:personal_page\}, and finish the perference survey. At the bottom of this page, there is a \\"Go record\\" button. After finishing the survey, users will click the button. Then users will be nevigated to the route drawing page, as shown in Figure~\\ref\{fig:routedraw_page\}.\
+\
+\\begin\{figure\}[!h]\
+\\centering\
+\\includegraphics[width=1.0\\columnwidth]\{pics/personal_page.png\}\
+\\caption\{Personal Preference Page\}\
+\\label\{fig:personal_page\}\
+\\end\{figure\}\
+\
+\\begin\{figure\}[!h]\
+\\centering\
+\\includegraphics[width=1.0\\columnwidth]\{pics/routedraw_page.png\}\
+\\caption\{Welcome Page\}\
+\\label\{fig:routedraw_page\}\
+\\end\{figure\}\
+\
+Users will choose their start building, start room, end building, end room from the top menus on the page, as shown in Figure~\\ref\{fig:choose_page\}, and click \\"GO\\" button on the right side of the menu.\
+\
+\
+\\begin\{figure\}[!h]\
+\\centering\
+\\includegraphics[width=1.0\\columnwidth]\{pics/choose_page.png\}\
+\\caption\{Choose Page\}\
+\\label\{fig:choose_page\}\
+\\end\{figure\}\
+\
+\
+Once the \\"GO\\" button is clicked, the user will be presented the floor map of the start location he chose, a little wizard riding a broom is placed on the map indicating the location of the start room, as shown in Figure~\\ref\{fig:map0\}. There are many labels on the map (e.g. bathroom labels, the Tim Hortons labels, bus stop labels, printer labels) to help users to picture the environment in their brains better. \
+\
+\\begin\{figure\}[!h]\
+\\centering\
+\\includegraphics[width=1.0\\columnwidth]\{pics/map0.png\}\
+\\caption\{Start view\}\
+\\label\{fig:map0\}\
+\\end\{figure\}\
+\
+Users can start drawing their routes by simply clicking on the map. Their first step shall be the start room. Each time they clicked, a foot print will be drawn on the map. Neighboring steps will have connected foot prints, as shown in Figure~\\ref\{fig:map1\}.\
+\
+\\begin\{figure\}[!h]\
+\\centering\
+\\includegraphics[width=1.0\\columnwidth]\{pics/map1.png\}\
+\\caption\{Footprints on the map\}\
+\\label\{fig:map1\}\
+\\end\{figure\}\
+\
+\
+Stairs and elevators are also labeled on the maps. If our users need to go up stairs or down stairs, they can click the stairs or the elevators on the map. A popup dialog will be presented when those labels are clicked. Users can choose to go up, down or just close the dialog in the dialog, as shown in Figure~\\ref\{fig:map2\}.\
+\
+\\begin\{figure\}[!h]\
+\\centering\
+\\includegraphics[width=1.0\\columnwidth]\{pics/map2.png\}\
+\\caption\{Clicked stairs or elevators on the map\}\
+\\label\{fig:map2\}\
+\\end\{figure\}\
+\
+The corresponding floor map will be presented on the webpage if the users clicked going up or going down. Floor maps in the same building are aligned and in the same scale. Therefore, users can easily find out the stairs or the elevator they come from. Users can keep drawing routes on the new floor map by clicking on the map, as shown in Figure~\\ref\{fig:map3\}.\
+\
+\\begin\{figure\}[!h]\
+\\centering\
+\\includegraphics[width=1.0\\columnwidth]\{pics/map3.png\}\
+\\caption\{New map after going up or down stairs\}\
+\\label\{fig:map3\}\
+\\end\{figure\}\
+\
+Exits and entrances are labeled on the maps as well. If our users need to exit the building ,they can click the exit on the map. The same as above, a popup dialog will be presented and users can choose to exit the building, enter the building or just close the dialog in the dialog, as shown in Figure~\\ref\{fig:map4\}.\
+\
+\
+\\begin\{figure\}[!h]\
+\\centering\
+\\includegraphics[width=1.0\\columnwidth]\{pics/map4.png\}\
+\\caption\{Clicked exirts or entrances on the map\}\
+\\label\{fig:map4\}\
+\\end\{figure\}\
+\
+So far, our system support MC building and DC building. Therefore, we already calculated which floor in which building users can get after exiting each of the exits (e.g. users will get the third floor of MC building after exiting the exit on the second floor of DC building). When the users click the exit button on the dialog, they will be presented the corresponding floor map of the expected floor in the expected building. Users can adjust the floor by simply click the stairs labels if they found they are not on their expected floors. When get to the expected floor, users will need to specify the entrance they use to enter the building by click on the entrance label on the map and choose \\"enter\\" on the popup dialog. Once they entered the building, they can continue to draw maps as before, as shown in Figure~\\ref\{fig:map5\}.\
+\
+\
+\\begin\{figure\}[!h]\
+\\centering\
+\\includegraphics[width=1.0\\columnwidth]\{pics/map5.png\}\
+\\caption\{New map after exiting a building\}\
+\\label\{fig:map5\}\
+\\end\{figure\}\
+\
+After the usrs arrived their destination, they will click the finish button on the right side of menus. Once the finish button is clicked, the route is recored in the server and the users will be presented a thank you on the webpage, as shown in Figure~\\ref\{fig:map6\} and Figure~\\ref\{fig:map61\}.\
+\
+\\begin\{figure\}[!h]\
+\\centering\
+\\includegraphics[width=1.0\\columnwidth]\{pics/map6.png\}\
+\\caption\{Arriving destination\}\
+\\label\{fig:map6\}\
+\\end\{figure\}\
+\
+\\begin\{figure\}[!h]\
+\\centering\
+\\includegraphics[width=1.0\\columnwidth]\{pics/map61.png\}\
+\\caption\{Thank you page\}\
+\\label\{fig:map61\}\
+\\end\{figure\}\
+\
+\\subsection\{Seachroute Interface\}\
+This interface is used for search routes from one room location to another across building groups with personal preferences. Our users need to finish the survey about their current personal preferences first, and then choose the start location and end location. After that, the route will be presented on the webpage. The basic workflow of the recordroute interface is shown in Figure~\\ref\{fig:find-uiflow\}.\
+\
+\\begin\{figure\}[!h]\
+\\centering\
+\\includegraphics[width=0.4\\columnwidth]\{pics/find-uiflow.png\}\
+\\caption\{Workflow of Seachroute Interface\}\
+\\label\{fig:find-uiflow\}\
+\\end\{figure\}\
+\
+\
+Same as above, users will first be presented the personal preferences page, as shown in Figure~\\ref\{fig:personal_page_1\}, and finish the perference survey. At the bottom of this page, there is a \\"Find route!\\" button. After finishing the survey, users will click the button. Then users will be nevigated to the route presenting page.\
+\
+\\begin\{figure\}[!h]\
+\\centering\
+\\includegraphics[width=1.0\\columnwidth]\{pics/personal_page_1.png\}\
+\\label\{fig:personal_page_1\}\
+\\caption\{Personal preferences page of Searchroute Interface\}\
+\\end\{figure\}\
+\
+\
+Users will choose their start building, start room, end building, end room from the top menus on the page, as shown in Figure~\\ref\{fig:choose_page_1\}, and click \\"Find\\" button on the right side of the menu.\
+\
+\\begin\{figure\}[!h]\
+\\centering\
+\\includegraphics[width=1.0\\columnwidth]\{pics/choose_page_1.png\}\
+\\caption\{Choose start location and end location\}\
+\\label\{fig:choose_page_1\}\
+\\end\{figure\}\
+\
+Once the \\"GO\\" button is clicked, the webpage will send the server the request and the server will reply the webpage with the proper route. Then the user will be presented the floor map of the start location he chose, with connected footprints on it, as shown in Figure~\\ref\{fig:map7\}. There are also many labels on the map (e.g. bathroom labels, the Tim Hortons labels, bus stop labels, printer labels) to help users to picture the environment in their brains better. \
+\
+\\begin\{figure\}[!h]\
+\\centering\
+\\includegraphics[width=1.0\\columnwidth]\{pics/map7.png\}\
+\\caption\{Map with proper route\}\
+\\label\{fig:map7\}\
+\\end\{figure\}\
+\
+Our users will follow those footprints on the map. If the footprints on the current floor map end up on an stairs label or elevator label, the users can click on that label and a popup dialog will be presented, as shown in Figure~\\ref\{fig:map8\}. Users can choose to go up or down stairs in the dialog. However, this time only the correct direction will be responded. That is to say, if the planned route goes upstairs from the second floor of DC to the first floor of DC, the map will not change if users click go upstairs on the second floor.\
+\
+\\begin\{figure\}[!h]\
+\\centering\
+\\includegraphics[width=1.0\\columnwidth]\{pics/map8.png\}\
+\\caption\{Clicked stairs on the map\}\
+\\label\{fig:map8\}\
+\\end\{figure\}\
+\
+\
+If it is the correct direction of stairs or elevators, the corresponding floor map as well as the footprints will be presented, as shown in Figure~\\ref\{fig:map9\}.\
+\
+\\begin\{figure\}[!h]\
+\\centering\
+\\includegraphics[width=1.0\\columnwidth]\{pics/map9.png\}\
+\\caption\{Corresponding map shown after going up or down\}\
+\\label\{fig:map9\}\
+\\end\{figure\}\
+\
+The same rules apply on exits and entrances as well, as shown in Figure~\\ref\{fig:map10\} and Figure~\\ref\{fig:map11\}.\
+\
+\\begin\{figure\}[!h]\
+\\centering\
+\\includegraphics[width=1.0\\columnwidth]\{pics/map10.png\}\
+\\caption\{Clicked exits on the map\}\
+\\label\{fig:map10\}\
+\\end\{figure\}\
+\
+\\begin\{figure\}[!h]\
+\\centering\
+\\includegraphics[width=1.0\\columnwidth]\{pics/map11.png\}\
+\\caption\{Clicked entrances on the map\}\
+\\label\{fig:map11\}\
+\\end\{figure\}\
+\
+\\section\{EXPERIMENT\}\
+\
+In this section, we explain how we execute the crowdsourcing to collect data for training the model based on decision tree algorithms.\
+\
+\\subsection\{Experiment Setup\}\
+\\subsubsection\{Participants\}\
+Since drawing a route between two specific rooms in the campus of University of Waterloo requires a relatively high degree of familiarity of the campus. Thus, the participants are UW students. 48 students in total participated in our experiment. These students have been UW for at least 2 months.\
+\\subsubsection\{ Source and Destination\}\
+To simplify our experiment, currently, we only support routes from DC 1350 to MC 4060. All of the participants are familiar with these two buildings. Since the number of participants are limited, supporting more source and destination pairs may reduce the data for each pair.\
+\
+\\subsection\{Experiment Methodology\}\
+\
+The experiment consists of two steps:\
+\
+\
+Step 1: Take a survey about the current status of the participant and the environment conditions. All participants are asked to answer all questions listed in table-XX (see modeling procedure). All these data is sent to the server and associated with a route ID.\
+\
+\
+Step 2: Draw a route from DC 1350 to MC 4060. The users are asked to plan the route according to their answers to the survey taken in step 1. The coordinates of points the user click on the map will be sent to the server as the route data. The route data is also associated with the route ID in step 1.\
+\
+\
+After these two steps, all data collection work has been finished. In summary, for each user, the data we collect includes:\
+\\begin\{itemize\}\
+\\item Survey answers\
+\\item Routes data\
+\\end\{itemize\}\
+\
+Step 3: Derive physical properties from the data of each route. PhysicalPropertyDecisionTrees are generated based on the physical properties and survey answers. RouteSuggestionDecisionTree is generated based on the physical properties and route data.\
+\
+\\section\{RESULT\}\
+\
+In our experiment, we generate 8 decision trees. 7 of them are for predicting physical properties based on a preference vector. The other one left is for predicting the route number based on a physical property vector.\
+\
+Figure ~\\ref\{fig:dt1\} shows the decision tree for predicting the number of stairs the route should use based on the user\'92s preference. Figure ~\\ref\{fig:dt2\} shows the decision tree for predicting how many levels of elevators the route should use. Figure ~\\ref\{fig:dt3\} shows the decision tree for predicting how many exits the route should pass. Figure ~\\ref\{fig:dt4\} shows the decision tree for predicting if the route should pass by a coffee shop. Figure ~\\ref\{fig:dt6\} shows the decision tree for predicting if the route should pass by a rest room. Figure ~\\ref\{fig:dt7\} shows the decision tree for predicting how long if the route. Figure ~\\ref\{fig:dt8\} shows the decision tree for predicting if the route goes outside the building.\
+\
+\
+Figure ~\\ref\{fig:dt9\} shows the decision tree for predicting which route should be picked.\
+\
+\
+There are several clarifications about the graph.\
+\\begin\{itemize\}\
+\\item For each non-leaf node of a decision tree, the first line is the condition to be checked. \
+\\item The gini value of each node is positive correlative to the probability of wrong prediction. A large gini value suggets the probability of wrong prediction is high.\
+\\item The value of samples means how much samples are left after following all the path from the root to the current node.\
+\\item Each element in the value array means the number of samples of the corresponding class.\
+\\item The value of class means the prediction value. This value is only shown in the routeSuggestionDecisionTree.\
+\\end\{itemize\}\
+\
+\\begin\{figure*\}[!h]\
+\\centering\
+\\includegraphics[width=2.0\\columnwidth]\{pics/decisionTree_1.png\}\
+\\caption\{Decision tree for predicting the number of stairs the route should use based on the user\'92s preference.\}\
+\\label\{fig:dt1\}\
+\\end\{figure*\}\
+\
+\\begin\{figure*\}[!h]\
+\\centering\
+\\includegraphics[width=2.0\\columnwidth]\{pics/decisionTree_2.png\}\
+\\caption\{Decision tree for predicting how many levels of elevators the route should use.\}\
+\\label\{fig:dt2\}\
+\\end\{figure*\}\
+\
+\\begin\{figure*\}[!h]\
+\\centering\
+\\includegraphics[width=0.7\\columnwidth]\{pics/decisionTree_3.png\}\
+\\caption\{Decision tree for predicting how many exits the route should pass.\}\
+\\label\{fig:dt3\}\
+\\end\{figure*\}\
+\
+\\begin\{figure*\}[!h]\
+\\centering\
+\\includegraphics[width=0.7\\columnwidth]\{pics/decisionTree_4.png\}\
+\\caption\{Decision tree for predicting if the route should pass by a coffee shop.\}\
+\\label\{fig:dt4\}\
+\\end\{figure*\}\
+\
+\\begin\{figure*\}[!h]\
+\\centering\
+\\includegraphics[width=0.7\\columnwidth]\{pics/decisionTree_6.png\}\
+\\caption\{Decision tree for predicting if the route should pass by a rest room..\}\
+\\label\{fig:dt6\}\
+\\end\{figure*\}\
+\
+\\begin\{figure*\}[!h]\
+\\centering\
+\\includegraphics[width=2.0\\columnwidth]\{pics/decisionTree_7.png\}\
+\\caption\{Decision tree for predicting how long if the route.\}\
+\\label\{fig:dt7\}\
+\\end\{figure*\}\
+\
+\\begin\{figure*\}[!h]\
+\\centering\
+\\includegraphics[width=0.7\\columnwidth]\{pics/decisionTree_8.png\}\
+\\caption\{Decision tree for predicting if the route goes outside the building.\}\
+\\label\{fig:dt8\}\
+\\end\{figure*\}\
+\
+\\begin\{figure*\}[!h]\
+\\centering\
+\\includegraphics[width=2.0\\columnwidth]\{pics/routeDT.png\}\
+\\caption\{Decision tree for predicting which route should be picked.\}\
+\\label\{fig:dt9\}\
+\\end\{figure*\}\
+\
+\
+\\section\{DISCUSSION\}\
+From the routeSuggestionDecisionTree, we can see that only a few of the routes are picked. These means that the number of potential routes is quite small since there are only limited possible routes. Besides, one route can fulfill many physical requirements. We think there are more physical properties which are useful. Also, it will be great if we can support more sources and destinations.\
+\
+\
+At the beginning, we asked the participants to draw the route before answering the survey questions. However, according to the participants, it will be more difficult for them to recall how they fill when they draw the route. Besides, they think taking the survey at first will be better. We adapt their suggestions and update our project to the current version.\
+\
+\
+Besides of the decision tree algorithm we used, the k-NN algorithm also seems to meet our requirements and is better when there are more features to be considered. It will be a good idea to implement a k-NN classifier for route suggesting problem. \
+\
+\\section\{CONCLUSION\}\
+\
+\\section\{FUTURE WORK\}\
+Our current system only includes MC and DC on UW campus. In the future, we would like to extend our system to cover the entire UW campus. One of the important concept of the system is crowdsourcing, thus via the extension of the entire campus, we will be able to collect many in-building routes. In the real scenario, not every student has the comprehensive building structure knowledge of the entire campus. For example, students in the Faculty of Mathematics are more familiar with MC, DC, M3, etc. while students in the Faculty of Engineering are more familiar with E2, E3, E5, etc. The reason is that students have frequent activities in those buildings, such as submitting assignments, attending professor\'92s office hours, etc. \
+\
+\
+However, class locations issued by the Registrar are spread across the entire campus. People are willing to travel to their destinations through hallways or bridges connecting buildings especially in winter or when the weather condition is extremely harsh, such as heavy snow, rain, etc. \
+\
+\
+Our system can really help to achieve people\'92s preference, which is travelling inside buildings through in-door connections to keep safe and warm. Since we have mentioned the fact that not every student has thecomprehensive building structure knowledge of the entire campus, during the crowdsourcing stage, students record their in-building routes for the buildings they are mostly familiar with through our system, and provide personal preferences other than the outdoor conditions associating with the routes. Thus, the system will be able to gather enough in-building routes between building groups, covering the entire campus. What our system will do is that it combines several routes collected in the crowdsourcing stage to a single route from one location to another. Thus the system can provide the user with one or more crowdsourced and processed in-building routes with personal preferences from the starting point to the destination. Here, personal preferences and starting/ending locations are inputted by the user.\
+\
+\
+\\section\{Acknowledgments\}\
+\
+We would like to thank Dr. Edith Law and everyone in CS889 class for their great help through this study.\
+\
+\\balance\
+\
+\\bibliographystyle\{acm-sigchi\}\
+\\bibliography\{report\}\
+\\end\{document\}\
+}
