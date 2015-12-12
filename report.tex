@@ -176,7 +176,7 @@ Decision trees are commonly utilized in many analytical procedures. What we lear
 
 \section{SYSTEM DESCRIPTON}
 
-Our system shall be built with knowledge of building structures and floor-level detailed maps of a building group. The main problems that this system is trying to address are collecting routing data with corresponding personal preferences, constructing the routing model based on the collected data. 
+Our system is built with knowledge of building structures and floor-level detailed maps of a building group. The main problems that this system is trying to address are collecting routing data with corresponding personal preferences, constructing the routing model based on the collected data. 
 
 
 The route suggestion problem can be considered as a classification problem. The input data we get from the users are their current status (e.g. if they are tired) and environment conditions (e.g. is it sunny). Our goal is to generate an most suitable route based on all of these variables. For example, if the users are tired, a route using elevators should be more suitable than one which uses stairs intuitively. Since most of the status and conditions we currently consider, like if the user is tired or if the user needs to use a printer, are discrete variables. Taking this into considerations, we determine that a decision tree should be a good option.
@@ -593,7 +593,7 @@ There are several clarifications about the graph.
 \item The value of class means the prediction value. This value is only shown in the routeSuggestionDecisionTree.
 \end{itemize}
 
-There are 16 leaf nodes in decision tree 1, the gini factors of 10 of the nodes has //TODO
+The final route is selected by the decision tree in Figure~\ref{fig:dt9}. As we can see from the graphs, 
 
 \begin{figure*}[!h]
 \centering
