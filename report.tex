@@ -593,7 +593,11 @@ There are several clarifications about the graph.
 \item The value of class means the prediction value. This value is only shown in the routeSuggestionDecisionTree.
 \end{itemize}
 
-The final route is selected by the decision tree in Figure~\ref{fig:dt9}. As we can see from the graphs, 
+The physical properties are predicted by the decition trees in Figure~\ref{figdt1} to Figure~\ref{fig:dt8}. As we can see from the graphs, 49 out of 64 leaf nodes in physical property decision trees has the gini factor of 0.0. That indicates a relatively high accuricy in physical property predicting. 
+
+
+The final route is selected by the decision tree in Figure~\ref{fig:dt9}. The gini factor in this decision tree is relatively higher that thoses in physical property decision trees. The possible reason is that this decision tree is used to predict which route to choose given a set of personal prefrences, for one set of personal preferences, there may exit more than one routes that satisfies those preferences. For example, the leaf node on the right of the red bottom leaf node, has 9 possible routes that satisfy the given preferences set. Thoses 9 routes should all be presented to the users. 
+
 
 \begin{figure*}[!h]
 \centering
@@ -646,7 +650,7 @@ The final route is selected by the decision tree in Figure~\ref{fig:dt9}. As we 
 
 \begin{figure*}[!h]
 \centering
-\includegraphics[width=2.0\columnwidth]{pics/routeDT.png}
+\includegraphics[width=1.0\columnwidth]{pics/routeDT.png}
 \caption{Decision tree for predicting which route should be picked.}
 \label{fig:dt9}
 \end{figure*}
